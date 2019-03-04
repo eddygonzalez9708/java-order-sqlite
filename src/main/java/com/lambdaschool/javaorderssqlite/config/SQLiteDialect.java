@@ -1,4 +1,4 @@
-package com.lambdaschool.h2crudsnacks.config;
+package com.lambdaschool.javaorderssqlite.config;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.SQLFunctionTemplate;
