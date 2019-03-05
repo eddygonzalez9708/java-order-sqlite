@@ -1,5 +1,6 @@
 package com.lambdaschool.javaorderssqlite;
 
+import com.lambdaschool.javaorderssqlite.models.Agents;
 import com.lambdaschool.javaorderssqlite.models.Customers;
 import com.lambdaschool.javaorderssqlite.models.Orders;
 import com.lambdaschool.javaorderssqlite.repository.AgentRepository;
@@ -40,6 +41,11 @@ public class JavaOrdersSQLiteController {
     }
 
     // GET /agents - return all the agents
+
+    @GetMapping("/agents")
+    public List<Agents> getAllAgents() {
+        return agentrepos.findAll();
+    }
 
     // GET /customers/custcode/{custcode}
 
