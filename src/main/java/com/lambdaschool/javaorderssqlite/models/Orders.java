@@ -3,6 +3,8 @@ package com.lambdaschool.javaorderssqlite.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Orders")
@@ -11,9 +13,16 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ordnum;
 
-    @Column(nullable = false)
+    @Column
+    @DecimalMin(".01")
     private double ordamount;
+
+    @Column
+    @DecimalMin(".01")
     private double advanceamount;
+
+    @Column
+    @NotNull
     private String orddescription;
 
     @ManyToOne
