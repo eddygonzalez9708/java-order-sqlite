@@ -77,13 +77,18 @@ public class JavaOrdersSQLiteController {
     // POST /orders - adds an order
 
     @PostMapping("/orders")
-        public Orders addOrder(@RequestBody Orders singleOrder) {
-            return ordrepos.save(singleOrder);
-        }
+    public Orders addOrder(@RequestBody Orders singleOrder) {
+        return ordrepos.save(singleOrder);
+    }
 
     // POST /agents - adds an agent
 
-    // PUT /customers/custocode/{custcode} - updates a customer based on custcode
+    @PostMapping("/agents")
+    public Agents addAgent(@RequestBody Agents agent) {
+        return agentrepos.save(agent);
+    }
+
+    // PUT /customers/custcode/{custcode} - updates a customer based on custcode
 
     // PUT /orders/ordnum/{ordnum} - updates an order based on ordnum
 

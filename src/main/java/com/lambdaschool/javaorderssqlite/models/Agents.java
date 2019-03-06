@@ -1,6 +1,8 @@
 package com.lambdaschool.javaorderssqlite.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -10,11 +12,24 @@ public class Agents {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long agentcode;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private String agentname;
+
+    @Column
+    @NotNull
     private String workingarea;
+
+    @Column
+    @DecimalMin(".01")
     private double commission;
+
+    @Column
+    @NotNull
     private String phone;
+
+    @Column
+    @NotNull
     private String country;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentcustomers")
