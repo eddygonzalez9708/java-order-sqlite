@@ -9,10 +9,12 @@ import com.lambdaschool.javaorderssqlite.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = {}, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -48,6 +50,11 @@ public class JavaOrdersSQLiteController {
     }
 
     // GET /customers/custcode/{custcode}
+
+    @GetMapping("/customers/custcode/{custcode}")
+    public List<Customers> getCustomerByCode(@PathVariable long custcode) {
+        return custrepos.findById(custcode).stream().collect(Collectors.toList());
+    }
 
     // GET /orders/ordnum/{ordnum}
 
