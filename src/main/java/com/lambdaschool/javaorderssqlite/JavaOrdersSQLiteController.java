@@ -8,10 +8,7 @@ import com.lambdaschool.javaorderssqlite.repository.CustomerRepository;
 import com.lambdaschool.javaorderssqlite.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,6 +68,11 @@ public class JavaOrdersSQLiteController {
     }
 
     // POST /customers - adds a customer
+
+    @PostMapping("/customers")
+    public Customers addCustomer(@RequestBody Customers customer) {
+        return custrepos.save(customer);
+    }
 
     // POST /orders - adds an order
 

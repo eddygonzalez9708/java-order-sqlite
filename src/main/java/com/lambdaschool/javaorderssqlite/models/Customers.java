@@ -3,6 +3,7 @@ package com.lambdaschool.javaorderssqlite.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -12,16 +13,40 @@ public class Customers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long custcode;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private String custname;
+
+    @Column
+    @NotNull
     private String custcity;
+
+    @Column
+    @NotNull
     private String workingarea;
+
+    @Column
+    @NotNull
     private String custcountry;
+
+    @Column
+    @NotNull
     private String grade;
+
+    @Column
     private double openingamt;
+
+    @Column
     private double receiveamt;
+
+    @Column
     private double paymentamt;
+
+    @Column
     private double outstandingamt;
+
+    @Column
+    @NotNull
     private String phone;
 
     @ManyToOne
