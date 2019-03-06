@@ -65,6 +65,11 @@ public class JavaOrdersSQLiteController {
 
     // GET /agents/agentcode/{agentcode}
 
+    @GetMapping("/agents/agentcode/{agentcode}")
+    public List<Agents> getAgentByAgentCode(@PathVariable long agentcode) {
+        return agentrepos.findById(agentcode).stream().collect(Collectors.toList());
+    }
+
     // POST /customers - adds a customer
 
     // POST /orders - adds an order
