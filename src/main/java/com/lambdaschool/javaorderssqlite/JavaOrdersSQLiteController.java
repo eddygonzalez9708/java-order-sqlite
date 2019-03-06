@@ -58,6 +58,11 @@ public class JavaOrdersSQLiteController {
 
     // GET /orders/ordnum/{ordnum}
 
+    @GetMapping("/orders/ordnum/{ordnum}")
+    public List<Orders> getOrderByOrdNum(@PathVariable long ordnum) {
+        return ordrepos.findById(ordnum).stream().collect(Collectors.toList());
+    }
+
     // GET /agents/agentcode/{agentcode}
 
     // POST /customers - adds a customer
