@@ -65,6 +65,10 @@ public class Customers {
         return custcode;
     }
 
+    public void setCustcode(long custcode) {
+        this.custcode = custcode;
+    }
+
     public String getCustname() {
         return custname;
     }

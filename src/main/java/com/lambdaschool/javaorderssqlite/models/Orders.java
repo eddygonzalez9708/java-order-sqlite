@@ -43,6 +43,10 @@ public class Orders {
         return ordnum;
     }
 
+    public void setOrdnum(long ordnum) {
+        this.ordnum = ordnum;
+    }
+
     public double getOrdamount() {
         return ordamount;
     }
