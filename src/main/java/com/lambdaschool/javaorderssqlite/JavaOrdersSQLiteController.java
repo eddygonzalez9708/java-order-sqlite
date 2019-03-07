@@ -116,7 +116,19 @@ public class JavaOrdersSQLiteController {
         }
     }
 
-    // PUT /agents/agentcode/{agentcode} - updates an agent based on ordnum
+    // PUT /agents/agentcode/{agentcode} - updates an agent based on agentcode
+
+    @PutMapping("/agents/agentcode/{agentcode}")
+    public Agents updateAgent(@RequestBody Agents agent, @PathVariable long agentcode) {
+        List<Agents> updatedAgent = agentrepos.findById(agentcode);
+        if (updatedAgent.size() > 0) {
+            agent.setAgentcode(agentcode);
+            agentrepos.save(agent);
+            return agent;
+        } else {
+            return null;
+        }
+    }
 
     // DELETE /customers/custcode/{custcode} - Deletes a customer based off of their custcode and deletes all their associated orders
 
