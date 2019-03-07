@@ -2,6 +2,7 @@ package com.lambdaschool.javaorderssqlite.repository;
 
 import com.lambdaschool.javaorderssqlite.models.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -16,4 +17,8 @@ public interface OrderRepository extends JpaRepository<Orders, Long> {
 
     @Query(value = "SELECT o.ordnum, o.advanceamount, o.ordamount, o.orddescription FROM Orders o WHERE o.custcode = :custcode", nativeQuery = true)
     List<Object> findCustomerOrdersByCustCode(@Param("custcode") long custname);
+
+    @Modifying
+    @Query(value = "DELETE FROM Orders WHERE ordnum = :ordnum", nativeQuery = true)
+    void deleteById(@Param("ordnum") long ordnum);
 }

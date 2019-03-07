@@ -145,6 +145,17 @@ public class JavaOrdersSQLiteController {
 
     // DELETE /orders/ordnum/{ordnum} - deletes an order based off its ordnum
 
+    @DeleteMapping("/orders/ordnum/{ordnum}")
+    public List<Orders> deleteOrder(@PathVariable long ordnum) {
+        List<Orders> deletedOrder = ordrepos.findById(ordnum);
+        if (deletedOrder.size() > 0) {
+            ordrepos.deleteById(ordnum);
+            return deletedOrder;
+        } else {
+            return null;
+        }
+    }
+
     // DELETE agents/agentcode/{agentcode} - Deletes an agent if they are not assigned to a customer or order (Stretch Goal)
 
     // /customers/order - Returns all customers with their orders
