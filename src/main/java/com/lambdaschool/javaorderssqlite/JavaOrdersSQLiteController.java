@@ -91,18 +91,30 @@ public class JavaOrdersSQLiteController {
     // PUT /customers/custcode/{custcode} - updates a customer based on custcode
 
     @PutMapping("/customers/custcode/{custcode}")
-    public Customers updateCustomer(@RequestBody Customers newCustomer, @PathVariable long custcode) {
+    public Customers updateCustomer(@RequestBody Customers customer, @PathVariable long custcode) {
         List<Customers> updatedCustomer = custrepos.findById(custcode);
         if (updatedCustomer.size() > 0) {
-            newCustomer.setCustcode(custcode);
-            custrepos.save(newCustomer);
-            return newCustomer;
+            customer.setCustcode(custcode);
+            custrepos.save(customer);
+            return customer;
         } else {
             return null;
         }
      }
 
     // PUT /orders/ordnum/{ordnum} - updates an order based on ordnum
+
+    @PutMapping("/orders/ordnum/{ordnum}")
+    public Orders updateOrder(@RequestBody Orders singleOrder, @PathVariable long ordnum) {
+        List<Orders> updatedOrder = ordrepos.findById(ordnum);
+        if (updatedOrder.size() > 0) {
+            singleOrder.setOrdnum(ordnum);
+            ordrepos.save(singleOrder);
+            return singleOrder;
+        } else {
+            return null;
+        }
+    }
 
     // PUT /agents/agentcode/{agentcode} - updates an agent based on ordnum
 
