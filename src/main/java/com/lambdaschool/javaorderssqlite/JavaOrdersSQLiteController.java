@@ -130,7 +130,12 @@ public class JavaOrdersSQLiteController {
         }
     }
 
-    // DELETE /customers/custcode/{custcode} - Deletes a customer based off of their custcode and deletes all their associated orders
+    // DELETE /customers/custcode/{custcode} - Deletes a customer based off of their custcode and deletes all of their associated orders
+
+    @DeleteMapping("/customers/custcode/{custcode}")
+    public void deleteCustomer(@PathVariable long custcode) {
+        custrepos.deleteById(custcode);
+    }
 
     // DELETE /orders/ordnum/{ordnum} - deletes an order based off its ordnum
 
