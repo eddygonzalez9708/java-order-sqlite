@@ -172,6 +172,10 @@ public class JavaOrdersSQLiteController {
 
     // /customers/order - Returns all customers with their orders
 
+    @GetMapping("/customer/order")
+    public List<Object> getCustomerOrders() {
+        return custrepos.findCustomerOrders().stream().collect(Collectors.toList());
+    }
 
     // /customers/name/{custname} - Returns all orders for a particular customer based on name
 

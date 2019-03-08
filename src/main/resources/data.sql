@@ -39,7 +39,6 @@ INSERT INTO customers (custcode, custname, custcity, workingarea, custcountry, g
                      (16, 'Venkatpati', 'Bangalore', 'Bangalore', 'India', '2', 8000.00, 11000.00, 7000.00, '12000.00', 'JRTVFDD', 7),
                      (11, 'Sundariya', 'Chennai', 'Chennai', 'India', '3', 7000.00, 11000.00, 7000.00, 11000.00, 'PPHGRTS', 10);
 
-
 INSERT INTO orders (ordnum, ordamount, advanceamount, custcode, agentcode, orddescription)
             VALUES (200100, 1000.00, 600.00, 13, 3, 'SOD'),
                    (200110, 3000.00, 500.00, 19, 10, 'SOD'),
