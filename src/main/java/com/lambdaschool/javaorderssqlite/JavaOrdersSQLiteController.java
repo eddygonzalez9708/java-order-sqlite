@@ -186,6 +186,11 @@ public class JavaOrdersSQLiteController {
 
     // /customers/order/{custcode} - Returns all orders for a particular customer based on custcode
 
+    @GetMapping("/customer/order/{custcode}")
+    public List<Object> getCustomerOrdersByCustCode(@PathVariable long custcode) {
+        return ordrepos.findCustomerOrdersByCustCode(custcode);
+    }
+
     // /agents/orders - Return a list with the agents name and associated order number and order description
 
     // /customers/{custcode} - Deletes a customer based off of their custcode and deletes all their associated orders
