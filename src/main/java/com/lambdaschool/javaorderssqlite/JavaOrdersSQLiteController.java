@@ -179,9 +179,12 @@ public class JavaOrdersSQLiteController {
 
     // /customers/name/{custname} - Returns all orders for a particular customer based on name
 
-    // /customers/order/{custcode} - Returns all orders for a particular customer based on custcode
+    @GetMapping("/customer/name/{custname}")
+    public List<Object> getCustomerOrdersByName(@PathVariable String custname) {
+        return ordrepos.findCustomerOrdersByName(custname);
+    }
 
-    // /agents - Returns all agents with their customers
+    // /customers/order/{custcode} - Returns all orders for a particular customer based on custcode
 
     // /agents/orders - Return a list with the agents name and associated order number and order description
 
