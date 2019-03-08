@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customers, Long> {
+    @Query(value = "SELECT * FROM Customers", nativeQuery = true)
+    List<Customers> getAll();
+
     @Query(value = "SELECT * FROM Customers WHERE custcode = :custcode", nativeQuery = true)
     List<Customers> findById(@Param("custcode") long custcode);
 

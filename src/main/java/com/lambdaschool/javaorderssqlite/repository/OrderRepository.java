@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Orders, Long> {
+    @Query(value = "SELECT * FROM Orders", nativeQuery = true)
+    List<Orders> getAll();
+
     @Query(value = "SELECT * FROM Orders WHERE ordnum = :ordnum", nativeQuery = true)
     List<Orders> findById(@Param("ordnum") long ordnum);
 

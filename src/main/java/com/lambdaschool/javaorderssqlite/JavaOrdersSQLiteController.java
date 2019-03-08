@@ -29,21 +29,21 @@ public class JavaOrdersSQLiteController {
 
     @GetMapping("/customers")
     public List<Customers> getAllCustomers() {
-        return custrepos.findAll();
+        return custrepos.getAll();
     }
 
     // GET /orders - return all the orders
 
     @GetMapping("/orders")
     public List<Orders> getAllOrders() {
-        return ordrepos.findAll();
+        return ordrepos.getAll();
     }
 
     // GET /agents - return all the agents
 
     @GetMapping("/agents")
     public List<Agents> getAllAgents() {
-        return agentrepos.findAll();
+        return agentrepos.getAll();
     }
 
     // GET /customers/custcode/{custcode}
@@ -197,8 +197,4 @@ public class JavaOrdersSQLiteController {
     public List<Object> getAgentOrders() {
         return agentrepos.findAgentOrders();
     }
-
-    // /customers/{custcode} - Deletes a customer based off of their custcode and deletes all their associated orders
-
-    // /agents/{agentcode} - Deletes an agent if they are not assigned to a customer or order (Stretch Goal)
 }

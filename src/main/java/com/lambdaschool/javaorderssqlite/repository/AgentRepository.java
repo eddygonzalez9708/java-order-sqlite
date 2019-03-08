@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface AgentRepository extends JpaRepository<Agents, Long> {
+    @Query(value = "SELECT * FROM Agents", nativeQuery = true)
+    List<Agents> getAll();
+
     @Query(value = "SELECT * FROM Agents WHERE agentcode = :agentcode", nativeQuery = true)
     List<Agents> findById(@Param("agentcode") long agentcode);
 
