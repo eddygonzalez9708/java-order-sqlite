@@ -193,6 +193,11 @@ public class JavaOrdersSQLiteController {
 
     // /agents/orders - Return a list with the agents name and associated order number and order description
 
+    @GetMapping("/agents/orders")
+    public List<Object> getAgentOrders() {
+        return agentrepos.findAgentOrders();
+    }
+
     // /customers/{custcode} - Deletes a customer based off of their custcode and deletes all their associated orders
 
     // /agents/{agentcode} - Deletes an agent if they are not assigned to a customer or order (Stretch Goal)
