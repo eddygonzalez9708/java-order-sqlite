@@ -98,7 +98,7 @@ public class JavaOrdersSQLiteController {
             custrepos.save(customer);
             return customer;
         } else {
-            return null;
+            throw new Error("The custcode " + custcode + " does not exist.");
         }
      }
 
@@ -112,7 +112,7 @@ public class JavaOrdersSQLiteController {
             ordrepos.save(singleOrder);
             return singleOrder;
         } else {
-            return null;
+            throw new Error("The ordnum " + ordnum + " does not exist.");
         }
     }
 
@@ -126,20 +126,20 @@ public class JavaOrdersSQLiteController {
             agentrepos.save(agent);
             return agent;
         } else {
-            return null;
+            throw new Error("The agentcode " + agentcode + " does not exist.");
         }
     }
 
     // DELETE /customers/custcode/{custcode} - Deletes a customer based off of their custcode and deletes all of their associated orders
 
     @DeleteMapping("/customers/custcode/{custcode}")
-    public List<Customers> deleteCustomer(@PathVariable long custcode) {
+    public Customers deleteCustomer(@PathVariable long custcode) {
         List<Customers> deletedCustomer = custrepos.findById(custcode);
         if (deletedCustomer.size() > 0) {
             custrepos.deleteById(custcode);
-            return deletedCustomer;
+            return deletedCustomer.get(0);
         } else {
-            return null;
+            throw new Error("The custcode " + custcode + " does not exist.");
         }
     }
 
@@ -152,13 +152,26 @@ public class JavaOrdersSQLiteController {
             ordrepos.deleteById(ordnum);
             return deletedOrder;
         } else {
-            return null;
+            throw new Error("The ordnum " + ordnum + " does not exist.");
         }
     }
 
     // DELETE agents/agentcode/{agentcode} - Deletes an agent if they are not assigned to a customer or order (Stretch Goal)
 
+    @DeleteMapping("/agents/agent/{agentcode}")
+    public Agents deleteAgent(@PathVariable long agentcode) {
+        Agents deletedAgent = agentrepos.findById(agentcode).get(0);
+
+        if (deletedAgent.getCustomers().size() == 0 || deletedAgent.getOrders().size() == 0) {
+            throw new Error("Agent cannot be deleted if they are assigned to a customer or order.");
+        } else {
+            agentrepos.deleteById(agentcode);
+            return deletedAgent;
+        }
+    }
+
     // /customers/order - Returns all customers with their orders
+
 
     // /customers/name/{custname} - Returns all orders for a particular customer based on name
 
